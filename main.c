@@ -52,30 +52,30 @@ void print_arr(int *arr, int n);
 
 int main(void)
 {
-	int arr[ARRAY_LENGTH] = {0};
-	srand((unsigned int) time(NULL));
-	for(int i = 0; i < ARRAY_LENGTH; i++) {
-		arr[i] = rand() % (MAX_INT+1); /* 0 to MAX_INT */
-	}
-	printf("Contents of array arr (unsorted):\n");
-	print_arr(arr, ARRAY_LENGTH);
-	print_dashline(50);
-	
-	printf("Running the quicksort function: \n");
+    int arr[ARRAY_LENGTH] = {0};
+    srand((unsigned int) time(NULL));
+    for(int i = 0; i < ARRAY_LENGTH; i++) 
+    {
+        arr[i] = rand() % (MAX_INT+1); /* 0 to MAX_INT */
+    }
+    printf("Contents of array arr (unsorted):\n");
+    print_arr(arr, ARRAY_LENGTH);
+    print_dashline(50);
+    printf("Running the quicksort function: \n");
     quicksort(arr, 0, HIGH);
     printf("Contents of array arr (sorted)");
     print_arr(arr, ARRAY_LENGTH);
-	print_dashline(50);
+    print_dashline(50);
     return 0;
 }
 
 /* print_arr: Print the array one element at a time */
 
 void print_arr(int *arr, int n) {
-	int i;
-	for(i = 0; i < n; i++) {
-		if((i % 10) == 0) printf("\n");
-		printf("%4d", arr[i]);
+    int i;
+    for(i = 0; i < n; i++) {
+	if((i % 10) == 0) printf("\n");
+       	    printf("%4d", arr[i]);
 	}
-	putchar('\n');
+    putchar('\n');
 }
