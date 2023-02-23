@@ -37,9 +37,9 @@
  * positions of i, j, and the pivot element */
 
 struct helper_s {
-	Decimal i;
-	Decimal j;
-	Decimal p;
+    Decimal i;
+    Decimal j;
+    Decimal p;
 };
 
 /* *****************************************
@@ -53,16 +53,16 @@ struct helper_s {
  * *****************************************
  */
 HelperObject create(void) {
-	HelperObject new_object;
-	new_object = (struct helper_s *)malloc(sizeof(struct helper_s));
-	if(new_object == NULL) {
-		printf("\nerror in allocating a helper object\n");
-		exit(EXIT_FAILURE);
-	}
+    HelperObject new_object;
+    new_object = (struct helper_s *)malloc(sizeof(struct helper_s));
+    if(new_object == NULL) {
+        printf("\nerror in allocating a helper object\n");
+        exit(EXIT_FAILURE);
+    }
     new_object->i = -1;
     new_object->j = -1;
     new_object->p = -1;
-	return new_object;
+    return new_object;
 }
 
 /*********************************************************************
@@ -80,12 +80,12 @@ HelperObject create(void) {
  */
 
 void initialize(HelperObject s,  const char *pos, Decimal val) {
-	if(!strcmp(pos, "i"))
-		s->i = val;
-	if(!strcmp(pos, "j"))
-		s->j = val;
-	if(!strcmp(pos, "p"))
-		s->p = val;
+    if(!strcmp(pos, "i"))
+        s->i = val;
+    if(!strcmp(pos, "j"))
+        s->j = val;
+    if(!strcmp(pos, "p"))
+        s->p = val;
 }
 
 /* void uninitialize(HelperObject s);
@@ -112,33 +112,41 @@ void uninitialize(HelperObject s) {
  *
  */
 void run(HelperObject s) {
-	int x, y;
-    
-	for(x = 0; x < 10; x++) {
-		if(x == s->i) {
-			printf("   i");
-		}
-		if(x == s->j) {
-			if(s->j == s->i) {
-				printf("\n");
+    int x, y;
+    /* Traverse the array segment */
+    for(x = 0; x < 10; x++) 
+    {
+	/* Print the location of i underneath the array segment */
+        if(x == s->i) {
+            printf("   i");
+        }
+	/* Print the location of j underneath the array segment */
+        if(x == s->j) {
+            if(s->j == s->i) {
+		/* If two positions point to the same array element, go to the next line,
+		 * catch up, than print the position */
+                printf("\n");
                 for(y = 0; y < s->j; y++) {
-                    printf("    ");
+                    printf("    "); // Catch up
                 }
             }
-			printf("   j");
-		}
-		if(x == s->p) {
+	    printf("   j"); // Print position
+	}
+	/* Print the location of p underneath the array segment */
+	if(x == s->p) {
+	    /* If p is in the same location as one of the other elements, print a newline, catch up,
+	     * than print p */
             if(s->p == s->i || s->p == s->j) {
                 printf("\n");
                 for(y = 0; y < s->p; y++) {
-                    printf("    ");
+                    printf("    "); // Catch up
                 }
             }
-			printf("   p");
-		}
-		if(x != s->i && x != s->j && x != s->p)
-			printf("    ");
-	}	
+	    printf("   p");
+	}
+	if(x != s->i && x != s->j && x != s->p)
+	    printf("    ");
+    }	
 }
 
 
@@ -150,5 +158,5 @@ void run(HelperObject s) {
  */
 
 Decimal Dec(int i) {
-	return (Decimal)(i % 10);
+    return (Decimal)(i % 10);
 }
