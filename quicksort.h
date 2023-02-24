@@ -7,5 +7,5 @@ void delay(unsigned int milliseconds);
 void swap(int *a, int *b);
 void print_dashline(int n);
 
-#define ARRAY_LENGTH 4
+#define ARRAY_LENGTH 10
 #endif
