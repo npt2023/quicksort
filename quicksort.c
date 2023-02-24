@@ -28,31 +28,31 @@
 
 
 
-void quicksort(int *arr, int low, int high) {
-    if(low >= high) return;
-    int i = low;
-    int j = high-1;
-    for(;;)
-    {
-        while(arr[i] <= arr[high] && i < high) {
-            i++;	
-        }
-	while(arr[j] > arr[high] && j > low) {
-	    j--;
-	}
-	/* Prints the array with respect to i, j, and the partitioning
-	 * element
-	 */
-	debug_arr(arr, i, j, high, ARRAY_LENGTH);
-	if(i < j)
+void quicksort(int *arr, int low, int high)	 {
+	if(low >= high) return;
+	int i = low;
+	int j = high-1;
+	for(;;)
 	{
-   	    swap(&arr[i], &arr[j]);
-	}
-	if(j <= i)
-	{
-	    swap(&arr[i], &arr[high]);
-	    break;
-	}
+		while(arr[i] <= arr[high] && i < high) {
+			i++;	
+		}
+		while(arr[j] > arr[high] && j > low) {
+	    	j--;
+		}
+		/* Prints the array with respect to i, j, and the partitioning
+	 	* element
+	 	*/
+		debug_arr(arr, i, j, high, ARRAY_LENGTH);
+		if(i < j)
+		{
+   	    	swap(&arr[i], &arr[j]);
+		}
+		if(j <= i)
+		{
+	    	swap(&arr[i], &arr[high]);
+	    	break;
+		}
     }
     quicksort(arr, low, i-1);
     quicksort(arr, i+1, high);
@@ -102,14 +102,14 @@ void debug_arr(int *arr, int i, int j, int pivot, int array_length)
      */
     for(pos = 0; pos <= array_length; pos++) {
         if(Dec(pos) == 0 || pos == array_length) { // Print a newline every 10 elements, or when array
-        //_length is reached
+        										   //_length is reached
             printf("\n");
             if(isInitialized) {
                 run(myObject);
                 uninitialize(myObject);
                 isInitialized = false;      
                 printf("\n");
-	    }
+	    	}
         }
         if(pos == array_length) break;
         printf("%4d", arr[pos]); // Print each element one by one
@@ -119,11 +119,11 @@ void debug_arr(int *arr, int i, int j, int pivot, int array_length)
         }
         if(pos == j) {
             isInitialized = true;
-	    initialize(myObject, "j", Dec(j));
+	    	initialize(myObject, "j", Dec(j));
         }
         if(pos == pivot) {
             isInitialized = true;
-	    initialize(myObject, "p", Dec(pivot));
+	    	initialize(myObject, "p", Dec(pivot));
         }
     }
 /* We are done */
